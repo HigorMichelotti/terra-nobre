@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-deploy-homol": "ng build --configuration staging && scp -r ./dist/checkinto-web/* hd@172.16.109.20:/home/hd/frontend/",
-    "build-deploy-prod": "ng build --configuration production --base-href https://higormichelotti.github.io/angular-github-actions/",
+    "build-deploy-prod": "ng build --configuration production --base-href https://higormichelotti.github.io/terra-nobre/",
     "deploy": "scp -r ./dist/checkinto-web/* hd@172.16.109.20:/home/hd/frontend/",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless"
   },
