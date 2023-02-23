@@ -1,0 +1,16 @@
+<app-breadcrumb [items]="setarBreadcrumb()"></app-breadcrumb>
+
+<app-card [hidHeader]="true" cardTitle="Usuarios" [options]="true">
+    <div>
+        <button class="btn btn-info btn-sm" (click)="atribuirParaSalvar()"><i class="icon feather icon-plus-circle"></i>
+            Cadastrar</button>
+    </div>
+    <hr>
+    <ag-grid-angular #myGrid class="ag-theme-balham" style="height: 487px;" [columnDefs]="colunasTabela"
+        [defaultColDef]="definicaoPadraoColunas" [gridOptions]="gridOptions" [animateRows]="true"
+        [localeText]="traducaoAgGrid" [cacheOverflowSize]="cacheOverflowSize" [context]="gridContext"
+        [loadingOverlayComponent]="loadingOverlayComponent" [suppressExcelExport]="true"
+        [maxConcurrentDatasourceRequests]="maxConcurrentDatasourceRequests" [frameworkComponents]="frameworkComponents"
+        [infiniteInitialRowCount]="infiniteInitialRowCount" [pagination]=true (gridReady)="inicializarAgGrid($event)">
+    </ag-grid-angular>
+</app-card>

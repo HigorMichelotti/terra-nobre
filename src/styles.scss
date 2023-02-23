@@ -1,0 +1,270 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* SCSS */
+@import "scss/style";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import '../node_modules/ngx-guided-tour/css/guided-tour-base-theme.css';
+
+.ag-theme-balham {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.alertaToastNotificacaoTop {
+  margin-top: 55px;
+  box-shadow: none !important;
+}
+
+.popup-swall-custom-error {
+  color: white !important;
+  box-shadow: none !important;
+  background-color: rgba(255, 0, 0, 0.705) !important;
+  padding: 12px !important;
+}
+
+.icon-swall-custom-error {
+  border: none !important;
+}
+
+.title-swall-white-error {
+  color: #fff !important;
+  font-size: 14px !important;
+}
+
+.title-swall-white-success {
+  color: #fff !important;
+  font-size: 14px !important;
+  margin-top: 11px !important;
+}
+
+.popup-swall-custom-success {
+  box-shadow: none !important;
+  background-color: rgba(88, 167, 88, 1) !important;
+  padding: 12px !important;
+}
+
+.chamado {
+  color: #fff;
+  text-align: center;
+  font-size: 11px !important;
+  min-width: 80px !important;
+  font-family: "Montserrat";
+  border-radius: 25px;
+}
+
+.fila-color {
+  background-color: #dc3545 !important;
+}
+
+.resgatado-color {
+  background-color: #17a2b8 !important;
+}
+
+.encerrado-color {
+  background-color: #28a745 !important;
+}
+
+.nav-link.active,
+.nav-item.show .nav-link {
+  transition: background-color 0.4s ease !important;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  color: #fff !important;
+  border: rgb(54, 98, 194) !important;
+  background-color: #4680ff !important;
+}
+
+.pcoded-header .dropdown .profile-notification {
+  margin: 0px !important;
+  border-top: 0px !important;
+  width: 100%;
+}
+
+.lb-sm {
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 13px !important;
+}
+
+.ui-accordion .ui-accordion-header {
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 0px !important;
+  padding: 0px !important;
+
+  // border: 1px solid red !important;
+}
+
+.p-accordion-custom .ui-accordion .ui-accordion-content {
+  border-top: transparent !important;
+  transition: all 0.2s !important;
+}
+
+.radius-15 {
+  border-radius: 6px !important;
+}
+
+.text-danger-input {
+  color: #dc3545;
+  font-size: 12px;
+}
+
+.nav-tabs .nav-link {
+  color: #295264 !important;
+}
+
+.nav-link.active {
+  background-color: #004936 !important;
+  color: #fff !important;
+}
+
+// nav do perfil do usuario
+.nav-link-perfil-usuario.nav-link.active {
+  margin-bottom: 5px !important;
+  border-radius: 3px !important;
+}
+
+.nav-link-perfil-usuario.nav-link {
+  margin-bottom: 5px !important;
+  border-radius: 3px !important;
+  
+  &:hover{
+    border-color: #eeeeee !important;
+  }
+}
+//
+
+.nav-perfil-usuario.nav-tabs{
+  border: none !important;
+}
+
+/* Custon select local no componente novo usuario */
+.select-novo-usuario .ng-select .ng-select-container {
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: #495057;
+  padding-left: 10px;
+  font-size: 14px;
+  border-radius: 25px;
+  height: 44px;
+  border: none;
+}
+
+.select-novo-usuario .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  color: #b2bac1;
+}
+
+.select-novo-usuario .ng-select .ng-select-container .ng-value-container .ng-input > input {
+  margin-top: 7px;
+  margin-left: 10px;
+}
+
+.select-novo-usuario .ng-dropdown-panel {
+  border: none !important;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+  border-radius: 0px 0px 25px 25px;
+}
+
+.select-novo-usuario .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked:hover {
+  border-radius: none;
+}
+
+.select-novo-usuario .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:last-child {
+  border-radius: 0px 0px 25px 25px !important;
+}
+
+/* Coston accordion nivel acesso usuário*/
+
+.pi-chevron-right{
+  font-size: 12px !important;
+}
+
+.pi-chevron-down{
+  font-size: 12px !important;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link{
+  padding: 5px !important;
+  border: none !important;
+  background-color: #f4f4f4 !important;
+  font-size: 13px !important;
+  font-weight: none !important;
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link{
+  background-color: #f4f4f4 !important;
+  color: rgb(37, 37, 37) !important;
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+  box-shadow: none !important;
+}
+
+.p-accordion .p-accordion-content {
+  padding-left: 36px !important;
+  border: none !important;
+  background-color: #f4f4f4 !important;
+}
+
+//scrollbar custom
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(124, 124, 124); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(85, 85, 85);
+}
+
+/* Custon tour */
+
+ngx-guided-tour .tour-step .tour-buttons .next-button {
+  background-color: #004936 !important;
+  border-radius: 2px !important;
+  font-weight: 100 !important;
+}
+
+ngx-guided-tour .tour-step h2.tour-title {
+  font-weight: 300 !important;
+}
+
+ngx-guided-tour .tour-step h3.tour-title {
+  font-weight: 400 !important;
+}
+
+ngx-guided-tour .tour-step .tour-buttons button.link-button {
+  font-weight: 300 !important;
+}
+
+ngx-guided-tour .tour-step .tour-block {
+  border-radius: 5px;
+}
+
+body .tour-open {
+  background-color: red !important;
+}
+
+/* Custon select do pad no cadastro relatórios dinamicos */
+.select-pad .ng-select .ng-select-container{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: rgba(255, 255, 255, 0) !important;
+  color: rgb(14, 77, 172);
+  font-size: 15px;
+  border: none;
+}
+
+.select-pad .ng-select .ng-select-container:hover{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

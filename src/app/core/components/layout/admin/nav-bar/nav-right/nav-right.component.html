@@ -1,0 +1,70 @@
+<ul class="navbar-nav ml-auto">
+
+  <li>
+    <div>
+      <span style="text-align: right;"><strong>{{nomeUsuarioCompleto}}</strong></span>
+      <small style="display: flex; justify-content: end;"><span style="font-size: 12px;">{{emailUsuario}}</span></small>
+    </div>
+  </li>
+
+  <li>
+    <!-- <div class="dropdown" ngbDropdown placement="auto">
+      <a ngbDropdownToggle href="javascript:" data-toggle="dropdown"><i class="far fa-star btn-favorito"></i></a>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right notification">
+        <div class="noti-head">
+          <h6 class="d-inline-block m-b-0">Favoritos</h6>
+        </div>
+        <div class="form-group col-md-12 pt-3">
+          <input type="text" [(ngModel)]="filtroMenu" autocomplete="false" id="nome" placeholder="Pesquisar"
+            class="form-control">
+        </div>
+        <ul class="noti-body">
+          <li *ngFor="let menu of arrayMenus | filtrarMenu:filtroMenu" class="notification"
+            (click)="mudarStatusFavorito(menu)">
+            <div class="media">
+              <i class="{{menu.icon}}"></i>
+              <div class="media-body">
+                <strong class="ml-3">{{menu.title}}</strong>
+                <span class="n-time text-muted">
+                  <i *ngIf="!menu.favorited && !menu.mudandoStatusMenu" class="far fa-star"></i>
+                  <i *ngIf="menu.favorited  && !menu.mudandoStatusMenu" class="fas fa-star favoritado"></i>
+                  <i *ngIf="menu.mudandoStatusMenu" class="fas fa-spinner fa-spin"></i>
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="noti-footer">
+          <span>Selecione para marcar como favorito</span>
+        </div>
+      </div>
+    </div> -->
+  </li>
+
+  <li>
+    <div class="dropdown drp-user" ngbDropdown placement="auto">
+      <a href="javascript:" ngbDropdownToggle data-toggle="dropdown">
+        <i class="icon feather icon-user"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right profile-notification" ngbDropdownMenu>
+        <div class="pro-head">
+          <img src="../../../../../assets/img/user.png" class="img-radius" alt="User-Profile-Image">
+          <span>{{nomeUsuarioCompleto}}</span><br>
+          <!-- <a href="/" class="dud-logout" title="Logout">
+            <i class="feather icon-log-out"></i>
+          </a> -->
+        </div>
+        <ul class="pro-body">
+          <li>
+            <a style="cursor: pointer;" (click)="fazerLogout()" class="dropdown-item">
+              <i class="feather icon-log-out"></i>
+              Sair
+            </a>
+          </li>
+          <!-- <li><a href="javascript:" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
+          <li><a href="javascript:" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li> -->
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>

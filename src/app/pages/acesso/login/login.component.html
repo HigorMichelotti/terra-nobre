@@ -1,0 +1,58 @@
+<div class="login d-flex align-items-center py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-xl-7 mx-auto">
+                <span class="text-fazer-login">Fazer login</span>
+                <p class="text-muted mb-4">Informe as credencias para acessar o sistema.</p>
+
+                <form [formGroup]="formulario">
+
+                    <div class="form-group mb-3">
+                        <input id="inputEmail" formControlName="email" type="email" placeholder="E-mail" required=""
+                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input id="inputPassword" formControlName="senha" type="password" placeholder="Senha"
+                            required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-danger">
+                    </div>
+
+                    <div class="d-flex bd-highlight mb-3">
+                        <div class="p-2 bd-highlight">
+
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" id="autoSizingCheck">
+                                <label class="custom-control-label" for="autoSizingCheck">
+                                    Lembrar-me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ml-auto p-2 bd-highlight">
+                            <p class="esqueceu-senha">
+                                <a href="acesso/esqueceu-senha">Esqueceu a senha?</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-left mt-3 ml-4"></div>
+
+                    <button *ngIf="!carregando" type="submit"
+                        class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                        (click)="this.fazerLogin()">Entrar</button>
+
+                    <button *ngIf="carregando" type="submit" disabled
+                        class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"><i
+                            class="fas fa-spinner fa-spin"></i> Aguarde</button>
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <span>Não tem uma conta?</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p class="criar-conta">
+                            <a href="acesso/novo-usuario">Criar uma conta</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

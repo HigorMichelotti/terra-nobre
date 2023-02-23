@@ -1,0 +1,61 @@
+<div *ngIf="items.length > 0" id="customItems" class="page-header">
+  <div class="page-block">
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        <div class="page-header-title">
+
+          <div class="page-header-title">
+            <ng-container *ngFor="let item of items; let last = last">
+              <h5 class="m-b-10" *ngIf="last">{{item.texto}}</h5>
+            </ng-container>
+          </div>
+
+        </div>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/admin/usuarios/meu-perfil']" *ngIf="type === 'theme2'"><i class="feather icon-home"></i></a>
+            <a [routerLink]="['/admin/usuarios/meu-perfil']" *ngIf="type === 'theme1'">Home</a>
+          </li>
+
+
+          <li *ngFor="let item of items" class="breadcrumb-item" [class.active]="eUltimoItem(item)">
+            <span *ngIf="eUltimoItem(item)">{{item.texto}}</span>
+            <a *ngIf="!eUltimoItem(item)" [routerLink]="item.link">{{item.texto}}</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-container *ngIf="navigationList && items.length <= 0">
+  <ng-container *ngFor="let breadcrumb of navigationList; let last = last">
+    <div class="page-header" *ngIf="last && breadcrumb.breadcrumbs !== false">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <ng-container *ngFor="let breadcrumb of navigationList; let last = last">
+                <h5 class="m-b-10" *ngIf="last">{{breadcrumb.title}}</h5>
+              </ng-container>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a [routerLink]="['/admin/usuarios/meu-perfil']" *ngIf="type === 'theme2'"><i class="feather icon-home"></i></a>
+                <a [routerLink]="['/admin/usuarios/meu-perfil']" *ngIf="type === 'theme1'">Home</a>
+              </li>
+              <ng-container *ngFor="let breadcrumb of navigationList">
+                <li class="breadcrumb-item" *ngIf="breadcrumb.url !== false"><a
+                    [routerLink]="breadcrumb.url">{{breadcrumb.title}}</a></li>
+                <li class="breadcrumb-item" *ngIf="breadcrumb.url === false"><a
+                    href="javascript:">{{breadcrumb.title}}</a></li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
