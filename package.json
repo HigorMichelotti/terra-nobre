@@ -1,5 +1,5 @@
 {
-  "name": "checkinto-web",
+  "name": "terra-nobre",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,9 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-deploy-homol": "ng build --configuration staging && scp -r ./dist/checkinto-web/* hd@172.16.109.20:/home/hd/frontend/",
-    "build-deploy-prod": "ng build --configuration production --base-href https://higormichelotti.github.io/terra-nobre/",
-    "deploy": "scp -r ./dist/checkinto-web/* hd@172.16.109.20:/home/hd/frontend/",
+    "build-deploy-prod": "ng deploy --base-href=/terra-nobre/",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
@@ -30,6 +28,7 @@
     "@types/uuid": "^8.3.4",
     "ag-grid-angular": "^28.0.0",
     "ag-grid-community": "^28.0.2",
+    "angular-cli-ghpages": "^1.0.5",
     "apexcharts": "^3.35.3",
     "autoprefixer": "10.4.7",
     "bootstrap": "^4.3.1",
