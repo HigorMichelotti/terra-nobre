@@ -7,9 +7,14 @@ import { Status } from 'src/app/shared/enums/status.enum';
 import { NavigationBreadcrumbItem } from 'src/app/shared/interfaces/navigation-breadcrumb';
 import { EnderecoViaCep } from 'src/app/shared/models/endereco-via-cep.model';
 import { Roles } from 'src/app/shared/models/usuario/roles.model';
+import { PropostaImpressaService } from 'src/app/shared/services/proposta-impressa.service';
 import Swal from 'sweetalert2';
 import { Usuario } from '../../usuarios/shared/models/usuario.model';
 import { UsuarioService } from '../../usuarios/shared/usuario.service';
+import { Comprador } from '../shared/models/comprador.model';
+import { Parcela } from '../shared/models/parcela.model';
+import { Proposta } from '../shared/models/proposta.model';
+import { PropostaImpressa } from '../shared/report/proposta-impressa';
 
 @Component({
   selector: 'app-form-proposta',
@@ -22,11 +27,11 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
     id: [null],
     imovel: this.formBuilder.group({
       vendedor: [],
+      corretor: [],
       numero: [],
       quadra: [],
       area: [],
-      cidade: [],
-      metragem: []
+      cidade: []
     }),
     comprador: this.formBuilder.group({
       rg: [],
@@ -69,7 +74,8 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
       quantidadeParcelaFinanciamento: [],
       quantidadeParcela: [],
       dataVencimentoSinal: []
-    })
+    }),
+    observacao: []
   })
 
   formularioParcela = this.formBuilder.group({
@@ -82,18 +88,19 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
   public arraySexo: Array<any>;
   public arrayEstadoCivil: Array<any>;
   public arrayRegimeCasamento: Array<any>;
-  public arrayParcelas: Array<any>;
+  public arrayParcelas: Array<Parcela>;
   public mensagemErroViaCep: string;
 
   public atualizandoComprador: boolean = false;
   public indexCompradorAtualizando: number;
 
-  public arrayCompradores: Array<any>;
+  public arrayCompradores: Array<Comprador>;
 
   constructor(
     protected override injector: Injector,
     private usuarioService: UsuarioService,
-    private viacepService: NgxViacepService
+    private viacepService: NgxViacepService,
+    public propostaImpressaService: PropostaImpressaService
   ) {
     super(injector, usuarioService, Usuario.fromJson)
   }
@@ -101,7 +108,17 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
   override ngOnInit() {
     super.ngOnInit();
 
-    this.arrayCidades = [{ nome: 'Santa Fé do Sul' }, { nome: 'Três Fronteiras' }, { nome: 'Santa Rita do Oeste' }, { nome: 'Rubinéia' }, { nome: 'Aparecida do taboado' }]
+    this.arrayCidades = [
+      { nome: 'Santa Fé do Sul' },
+      { nome: 'Três Fronteiras' },
+      { nome: "Santa Rita D'Oeste" },
+      { nome: 'Rubinéia' },
+      { nome: 'Aparecida do Taboado' },
+      { nome: "Santa Clara D'Oeste" },
+      { nome: 'Sud Mennucci' },
+      { nome: 'Mesópolis' },
+      { nome: "Aparecida D'Oeste" }
+    ]
     this.arrayNacionalidade = [{ descricao: 'Brasileiro' }]
     this.arraySexo = [{ descricao: 'Masculino' }, { descricao: 'Feminino' }]
     this.arrayEstadoCivil = [{ descricao: 'Casado(a)' }, { descricao: 'Solteiro(a)' }, { descricao: 'Viúvo(a)' }, { descricao: 'Divorciado(a)' }]
@@ -145,7 +162,7 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
       dataParcela = novoDia.toString() + '/' + this.correcaoMes(novoMes.toString()) + '/' + novoAno.toString();
 
       this.arrayParcelas.push({
-        id: contador, valor: valorParcela, vencimento: dataParcela,
+        id: contador, valor: Number(valorParcela), vencimento: dataParcela,
       })
     }
 
@@ -166,22 +183,33 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
     return mes < 10 ? "0" + mes : mes;
   }
 
-  gerarProposta() { }
+  gerarProposta() {
+    let proposta: Proposta = new Proposta();
+    proposta.imovel = this.formulario.value.imovel;
+    proposta.comprador = this.arrayCompradores;
+    proposta.valores = this.formulario.value.valores;
+    proposta.valores.parcelas = this.arrayParcelas;
+
+    console.log('this.formulario.value', this.formulario.value)
+    console.log('proposta', proposta)
+
+    new PropostaImpressa(proposta, this.propostaImpressaService).gerarRelatorio();
+  }
 
   adicionarComprador() {
     this.arrayCompradores.push(this.formulario.value.comprador)
-    this.formulario.reset()
+    this.formulario.controls.comprador.reset()
   }
 
   atualizarComprador() {
     this.arrayCompradores[this.indexCompradorAtualizando] = this.formulario.value.comprador;
     this.atualizandoComprador = false;
-    this.formulario.reset()
+    this.formulario.controls.comprador.reset()
   }
 
   cancelarEdicaoComprador() {
     this.atualizandoComprador = false;
-    this.formulario.reset()
+    this.formulario.controls.comprador.reset()
   }
 
   atribuirParaEditarComprador(comprador: any, indexComprador: number) {
@@ -195,7 +223,7 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
   }
 
   public finalizarEdicaoParcela(indexParcela: number) {
-    this.arrayParcelas[indexParcela].valor = this.formularioParcela.value.valor[indexParcela];
+    this.arrayParcelas[indexParcela].valor = Number(this.formularioParcela.value.valor[indexParcela]);
     this.arrayParcelas[indexParcela].vencimento = this.formularioParcela.value.vencimento[indexParcela];
     this.arrayParcelas[indexParcela].valorEditado = true;
 
@@ -221,7 +249,7 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
       if (!this.arrayParcelas[contador].valorEditado) {
         let valorParcela = ((Number(this.formulario.value.valores.valorEntrada) - valorParcelasEditadas) / (quantidadeParcelas - quantidadeParcelasSemEditadas)).toFixed(2);
 
-        this.arrayParcelas[contador].valor = valorParcela;
+        this.arrayParcelas[contador].valor = Number(valorParcela);
       }
     }
     console.log('arrayParcelas', this.arrayParcelas)
@@ -233,7 +261,7 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
     this.formularioParcela = this.formBuilder.group({
       vencimento: new FormArray(this.arrayParcelas.map(data => new FormControl(data.vencimento))),
       valor: new FormArray(this.arrayParcelas.map(data => new FormControl(data.valor))),
-    })
+    }) as any
 
     console.log('this.formularioParcela', this.formularioParcela.value)
   }
@@ -307,9 +335,9 @@ export class FormPropostaComponent extends BaseFormComponent<Usuario> implements
     let valorFinanciamento = Number(this.formulario.value.valores.valorContrato) - Number(this.formulario.value.valores.valorEntrada)
     this.formulario.controls.valores.patchValue({
       valorFinanciamento: valorFinanciamento,
-      valorParcelaFinanciamento: valorFinanciamento / this.formulario.value.valores.quantidadeParcelaFinanciamento
     })
   }
+
 
   public setarBreadcrumb(): NavigationBreadcrumbItem[] {
     return [

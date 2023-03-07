@@ -18,6 +18,14 @@
                                 <i class="far fa-times-circle"></i> Campo obrigatório
                             </div>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="corretor">Corretor</label>
+                            <input formControlName="corretor" type="text" id="corretor" class="form-control">
+                            <div *ngIf="formulario.get('imovel').get('corretor').invalid && formulario.get('imovel').get('corretor').touched && formulario.get('imovel').get('corretor').errors['required']"
+                                class="text-danger-input">
+                                <i class="far fa-times-circle"></i> Campo obrigatório
+                            </div>
+                        </div>
                         <div class="form-group col-md-3">
                             <label for="numero">Numero</label>
                             <input formControlName="numero" type="text" id="numero" class="form-control">
@@ -35,27 +43,19 @@
                             </div>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="area">Area</label>
+                            <label for="area">Área</label>
                             <input formControlName="area" type="text" id="area" class="form-control">
                             <div *ngIf="formulario.get('imovel').get('area').invalid && formulario.get('imovel').get('area').touched && formulario.get('imovel').get('area').errors['required']"
                                 class="text-danger-input">
                                 <i class="far fa-times-circle"></i> Campo obrigatório
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="cidade">Cidade</label>
                             <ng-select [items]="arrayCidades" bindLabel="nome"
                                 notFoundText="Nenhum resultado encontrado!" bindValue="nome" formControlName="cidade"
                                 placeholder="Selecionar">
                             </ng-select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="metragem">Metragem</label>
-                            <input formControlName="metragem" type="text" id="metragem" class="form-control">
-                            <div *ngIf="formulario.get('imovel').get('metragem').invalid && formulario.get('imovel').get('metragem').touched && formulario.get('imovel').get('metragem').errors['required']"
-                                class="text-danger-input">
-                                <i class="far fa-times-circle"></i> Campo obrigatório
-                            </div>
                         </div>
                     </div>
                 </form>
@@ -372,7 +372,7 @@
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="valorFinanciamento">Valor financeiamento</label>
+                            <label for="valorFinanciamento">Valor financiamento</label>
                             <input formControlName="valorFinanciamento" currencyMask type="text" [readonly]="true"
                                 id="valorFinanciamento" class="form-control">
                             <div *ngIf="formulario.get('valores').get('valorFinanciamento').invalid && formulario.get('valores').get('valorFinanciamento').touched && formulario.get('valores').get('valorFinanciamento').errors['required']"
@@ -384,11 +384,11 @@
                         <div style="background-color: #f3f3f3; margin-left: 5px; margin-right: 5px;"
                             class="row col-md-12 pl-1 pr-1 pt-3 pb-3 mb-3">
                             <div class="col-md-12">
-                                <h6 style="color: #707070;">Financianento</h6>
+                                <h6 style="color: #707070;">Financiamento</h6>
                                 <hr>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="valorFinanciamento">Valor financeiamento</label>
+                                <label for="valorFinanciamento">Valor financiamento</label>
                                 <input formControlName="valorFinanciamento" currencyMask type="text" [readonly]="true"
                                     id="valorFinanciamento" class="form-control">
                                 <div *ngIf="formulario.get('valores').get('valorFinanciamento').invalid && formulario.get('valores').get('valorFinanciamento').touched && formulario.get('valores').get('valorFinanciamento').errors['required']"
@@ -398,8 +398,8 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="quantidadeParcelaFinanciamento">Quantidade parcela</label>
-                                <input formControlName="quantidadeParcelaFinanciamento" type="number" id="quantidadeParcelaFinanciamento"
-                                    class="form-control" (blur)="calcularValorFinanciamento()">
+                                <input formControlName="quantidadeParcelaFinanciamento" type="number"
+                                    id="quantidadeParcelaFinanciamento" class="form-control">
                                 <div *ngIf="formulario.get('valores').get('quantidadeParcelaFinanciamento').invalid && formulario.get('valores').get('quantidadeParcelaFinanciamento').touched && formulario.get('valores').get('quantidadeParcelaFinanciamento').errors['required']"
                                     class="text-danger-input">
                                     <i class="far fa-times-circle"></i> Campo obrigatório
@@ -416,8 +416,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="valorParcelaFinanciamento">Valor parcela financeiamento</label>
-                                <input formControlName="valorParcelaFinanciamento" currencyMask type="text" [readonly]="true"
+                                <label for="valorParcelaFinanciamento">Valor parcela financiamento</label>
+                                <input formControlName="valorParcelaFinanciamento" currencyMask type="text"
                                     id="valorFinanciamento" class="form-control">
                                 <div *ngIf="formulario.get('valores').get('valorParcelaFinanciamento').invalid && formulario.get('valores').get('valorParcelaFinanciamento').touched && formulario.get('valores').get('valorParcelaFinanciamento').errors['required']"
                                     class="text-danger-input">

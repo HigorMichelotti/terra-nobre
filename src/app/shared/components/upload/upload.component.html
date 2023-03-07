@@ -3,7 +3,7 @@
 <div class="container-upload" appDragAndDrop (fileDropped)="soltarArquivo($event)">
     <input type="file" #fileDropRef id="fileDropRef" multiple/>
          <!-- (change)="procurarArquivo($event.target.files)" -->
-    <img src="../../../../../assets/images/upload/ic-upload-file.svg" alt="">
+    <img src="../../../../../terra-nobre/assets/images/upload/ic-upload-file.svg" alt="">
     <h3>arraste e solte o arquivo aqui</h3>
     <h3>ou</h3>
     <label for="fileDropRef">Procure</label>
@@ -11,7 +11,7 @@
 <div class="files-list">
     <ng-container *ngFor="let file of files; let i = index">
         <div class="col-md-6 single-file {{file.styleClass.divFileError}}">
-            <img src="../../../../../assets/images/upload/ic-file.svg" width="45px" alt="file">
+            <img src="../../../../../terra-nobre/assets/images/upload/ic-file.svg" width="45px" alt="file">
             <div class="info">
 
                 <h4 class="name">
@@ -26,7 +26,7 @@
                 </p>
                 <app-progress [classCss]="file?.classCss" [progress]="file?.progress"></app-progress>
             </div>
-            <img src="../../../../../assets/images/upload/ic-delete-file.svg" class="delete"
+            <img src="../../../../../terra-nobre/assets/images/upload/ic-delete-file.svg" class="delete"
                 width="20px" alt="file" (click)="deletarArquivo(i)">
         </div>
     </ng-container>

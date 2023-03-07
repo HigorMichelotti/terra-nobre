@@ -46,7 +46,7 @@ export class BreadcrumbComponent implements OnInit {
 
   filterNavigation(activeLink: any) {
     let result: any = [];
-    let title = 'TerraNobre';
+    let title = 'Terra Nobre';
     this.navigation.forEach((a:any) => {
       if (a.type === 'item' && 'url' in a && a.url === activeLink) {
         result = [
@@ -128,12 +128,12 @@ export class BreadcrumbComponent implements OnInit {
     });
     this.navigationList = result;
     // this.titleService.setTitle(`${title}`);
-    this.titleService.setTitle(`TerraNobre`);
+    this.titleService.setTitle(`Terra Nobre`);
   }
 
   eUltimoItem(item: NavigationBreadcrumbItem): boolean {
     // this.titleService.setTitle(`${item.texto}`);
-    this.titleService.setTitle(`TerraNobre`);
+    this.titleService.setTitle(`Terra Nobre`);
     const index = this.items.indexOf(item);
     return index + 1 == this.items.length;
   }

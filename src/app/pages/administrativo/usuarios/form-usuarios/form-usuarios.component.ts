@@ -1,14 +1,10 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { first } from 'rxjs';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { BaseFormComponent } from 'src/app/shared/components/base-components/base-form/base-form.component';
 import { Status } from 'src/app/shared/enums/status.enum';
-import { HelperUpload } from 'src/app/shared/helpers/helper-upload';
 import { NavigationBreadcrumbItem } from 'src/app/shared/interfaces/navigation-breadcrumb';
-import { ClaimNivelAcesso } from 'src/app/shared/models/usuario/claim-nivel-acesso.model';
 import { Roles } from 'src/app/shared/models/usuario/roles.model';
-import { ClaimService } from 'src/app/shared/services/claim.service';
 import { Usuario } from '../shared/models/usuario.model';
 import { UsuarioService } from '../shared/usuario.service';
 
